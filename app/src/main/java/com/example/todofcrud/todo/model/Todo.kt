@@ -1,4 +1,4 @@
-package com.example.todofcrud.data
+package com.example.todofcrud.todo.model
 
 data class Todo(
     val id: String = "",

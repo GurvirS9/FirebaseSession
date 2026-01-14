@@ -1,9 +1,9 @@
-package com.example.todofcrud.viewmodel
+package com.example.todofcrud.todo.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.todofcrud.data.Todo
-import com.example.todofcrud.data.TodoRepository
+import com.example.todofcrud.todo.model.Todo
+import com.example.todofcrud.todo.data.TodoRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

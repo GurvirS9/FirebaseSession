@@ -24,6 +24,43 @@
 4. **Security Rules**: Start in **Test Mode** (allows read/write for 30 days).
    - *Note: For a real app, you should configure proper security rules.*
 
+### Step 5: Enable Authentication
+#### Step 1: Enable Authentication Providers
+1. Go to Firebase Console -> **Build** -> **Authentication**.
+2. Click **Get Started**.
+3. **Email/Password**:
+   - Select **Email/Password**.
+   - Enable "Email/Password".
+   - Click **Save**.
+4. **Google**:
+   - Click **Add new provider**.
+   - Select **Google**.
+   - Enable it.
+   - Set the **Project support email**.
+   - Click **Save**.
+
+#### Step 2: Google Sign-In Requirements (IMPORTANT)
+For Google Sign-In to work, you **MUST** add your SHA-1 fingerprint to Firebase.
+
+1. **Generate SHA-1**:
+   - Open the **Gradle** tab in Android Studio (right side).
+   - Navigate to `TodoFCRUD` -> `Tasks` -> `android` -> `signingReport`.
+   - Double-click `signingReport`.
+   - OR Click Gradle (Elephant icon) on right panel, click Execute Gradle task (Program icon) and type `signingReport` and hit enter
+   - Copy the `SHA1` from the console output (look for generic 'debug' key).
+
+2. **Add to Firebase**:
+   - Go to Firebase Console -> **Project Settings** (Gear icon).
+   - Scroll down to **Your apps**.
+   - Click **Add fingerprint**.
+   - Paste the SHA-1 key.
+   - Click **Save**.
+
+3. **Update Configuration**:
+   - **Re-download `google-services.json`**.
+   - Replace the old file in `app/google-services.json`.
+   - This updated file contains the `client_id` required for Google Sign-In.
+
 ### P.S.
 If you see a `PERMISSION_DENIED` crash, go to the **Rules** tab in Firestore and replace everything with these disaster rules:
 ```
@@ -38,3 +75,4 @@ service cloud.firestore {
 ```
 Then click **Publish**.
 
+If you see `Error 12500 / 10`: It means SHA-1 is missing or wrong.
